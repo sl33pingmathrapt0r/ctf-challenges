@@ -18,7 +18,12 @@ while not flag:
     # obtain image b64
     content= driver.page_source
     soup= bs(content, features= "html.parser")
-    im_b64= soup.find('img').get('src').replace('data:image/png;base64,', '')
+    try: 
+        im_b64= soup.find('img').get('src').replace('data:image/png;base64,', '')
+    except:
+        print("ERROR: Only image detected.\n",
+              "Ensure sign in on driver's window completed before running script.")
+        break
 
     # convert to cv2 img
     im_bytes= base64.b64decode(im_b64)
@@ -54,14 +59,10 @@ while not flag:
     # cv2.waitKey()
 
     # obtain return string, contains flag if successful
-    try: 
-        p_elems= driver.find_elements(By.TAG_NAME, 'p')
-        for p in p_elems: 
-            if 'flag' in p.text: 
-                flag= True
-                flag_text= p.text
-    except:
-        print("ERROR: Only image detected.\n",
-              "Ensure sign in on driver's window completed before running script.")
+    p_elems= driver.find_elements(By.TAG_NAME, 'p')
+    for p in p_elems: 
+        if 'flag' in p.text: 
+            flag= True
+            flag_text= p.text
 
 print(flag_text)
