@@ -65,4 +65,4 @@ while not flag:
             flag= True
             flag_text= p.text
 
-print(flag_text)
+if flag: print(flag_text)
