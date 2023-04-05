@@ -54,10 +54,14 @@ while not flag:
     # cv2.waitKey()
 
     # obtain return string, contains flag if successful
-    p_elems= driver.find_elements(By.TAG_NAME, 'p')
-    for p in p_elems: 
-        if 'flag' in p.text: 
-            flag= True
-            flag_text= p.text
+    try: 
+        p_elems= driver.find_elements(By.TAG_NAME, 'p')
+        for p in p_elems: 
+            if 'flag' in p.text: 
+                flag= True
+                flag_text= p.text
+    except:
+        print("ERROR: Only image detected.\n",
+              "Ensure sign in on driver's window completed before running script.")
 
 print(flag_text)
