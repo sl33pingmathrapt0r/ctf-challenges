@@ -21,7 +21,7 @@ while not flag:
     try: 
         im_b64= soup.find('img').get('src').replace('data:image/png;base64,', '')
     except:
-        print("ERROR: Only image detected.\n",
+        print("ERROR: No image detected.\n",
               "Ensure sign in on driver's window completed before running script.")
         break
 
