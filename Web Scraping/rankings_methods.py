@@ -52,4 +52,20 @@ def scrape_rankings_list(driver: webdriver.Chrome, url_main: str, page: int) -> 
         
     return entries
         
-    
+
+
+# trial method
+"""
+Using Selenium and Beautiful Soup, obtain from the 
+page source, elements that are relevant. Clean the data
+and store appropriately.  
+"""
+
+# URL_MAIN= 'https://yeswehack.com/'
+# YEARS= range(2016, 2024)
+
+# chrome driver added to PATH
+# driver= webdriver.Chrome('chromedriver')
+# driver.minimize_window()
+# url_tag= 'ranking?period=All&page='
+# hunters= tools.scrape_rankings_list(driver, URL_MAIN+url_tag, 1)
